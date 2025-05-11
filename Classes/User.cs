@@ -24,7 +24,7 @@ namespace MedicalLaboratory.Classes
 
         public static void FoundUser(string login, string password)
         {
-            using (SqlConnection connection = new SqlConnection(Manager.connectionString))
+            using (SqlConnection connection = new SqlConnection(Manager.guestConnectionString))
             {
                 int founded_id = 0;
                 int founded_role = 0;

@@ -10,7 +10,10 @@ namespace MedicalLaboratory.Classes
 {
     internal class Manager
     {
-        public static string connectionString = "Data Source=DESKTOP-5CVQU3F\\SQLEXPRESS;Initial Catalog=Laboratory;Integrated Security=True";
+        // Для тестирования
+        //public static string connectionString = "Data Source=DESKTOP-5CVQU3F\\SQLEXPRESS;Initial Catalog=Laboratory;Integrated Security=True";
+        // Для публикации
+        public static string guestConnectionString = "Data Source=tcp:26.199.117.108,33678;Initial Catalog=Laboratory;User ID=LaboratoryGuest;Password=Q]a2/6BqG@:H@g]N;Persist Security Info=True;";
         public static Frame MainFrame { get; set; }
     }
 }

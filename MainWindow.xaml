@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MedicalLaboratory"
         mc:Ignorable="d"
-        Title="Медицинская Лаборатория" Height="720" Width="1280" MinHeight="480" MinWidth="720">
+        Title="Медицинская Лаборатория" Width="1280" Height="720" MinWidth="720" MinHeight="480">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -13,11 +13,15 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="#045584"/>
+        
         <StackPanel Orientation="Horizontal">
             <Image Source="Sources/logo.png" Width="34" Height="34" Margin="20,0,10,0"/>
             <TextBlock Text="Медицинская Лаборатория" FontSize="34" Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </StackPanel>
-        <Button Content="Выйти" Name="BtnExit" Background="White" FontFamily="Cascadia Code SemiBold" FontSize="16" Foreground="#FF5A5A5A" Click="BtnExit_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Height="34"  Width="75"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Личный кабинет" Name="LogIn_Button" Background="White" FontFamily="Cascadia Code SemiBold" FontSize="16" Foreground="#FF5A5A5A" Margin="0,0,20,0" Height="34"  Width="155" Click="LogIn_Button_Click"/>
+            <Button Content="Выйти" Name="BtnExit" Background="White" FontFamily="Cascadia Code SemiBold" FontSize="16" Foreground="#FF5A5A5A" Click="BtnExit_Click" Margin="0,0,20,0" Height="34"  Width="75"/>
+        </StackPanel>
         <Frame NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.Row="1" Name="MainFrame"/>
     </Grid>
 </Window>

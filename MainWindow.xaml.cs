@@ -1,5 +1,6 @@
 ﻿using MedicalLaboratory.Classes;
 using MedicalLaboratory.Pages;
+using MedicalLaboratory.Pages.SystemPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,28 +26,25 @@ namespace MedicalLaboratory
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage());
+            MainFrame.Navigate(new MainMenu());
             Manager.MainFrame = MainFrame;
         }
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.GoBack();
+            if (MainFrame.CanGoBack)
+            {
+                Manager.MainFrame.GoBack();
+            }
+            else
+            {
+
+            }
         }
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
-            if (MainFrame.CanGoBack)
-            {
-                BtnExit.Visibility = Visibility.Visible;
-            }
-
-            else
-            {
-                BtnExit.Visibility = Visibility.Hidden;
-            }
-
             string currentPage = MainFrame.Content.GetType().Name;
 
-            if (currentPage != "UserPage" && currentPage != "ManagerPage")
+            if (currentPage != "MainMenu")
             {
                 BtnExit.Content = "Назад";
             }
@@ -55,6 +53,11 @@ namespace MedicalLaboratory
                 BtnExit.Content = "Выйти";
             }
 
+        }
+
+        private void LogIn_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new LoginPage());
         }
     }
 }

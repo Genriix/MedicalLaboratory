@@ -5,10 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MedicalLaboratory.Pages.UserPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+       d:DesignWidth="1200" d:DesignHeight="720"
       Title="AdminPage">
 
     <Grid>
-        <TextBlock Text="Admin" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"  Background="#81dbee"/>
     </Grid>
 </Page>
