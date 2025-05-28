@@ -24,5 +24,51 @@
                 <Button Style="{StaticResource BaseButton}" Content="Отчёты" Width="358" Margin="5"/>
             </StackPanel>
         </Border>
+        
+        <ScrollViewer Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl x:Name="OrderItemsControl" Grid.Column="0" Margin="0,10,0,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="50" Margin="20,10,0,0" Background="#81dbee" BorderBrush="LightGray" CornerRadius="25">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="{Binding id}" 
+                                                   Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" 
+                                                       Text="{Binding creation_date, StringFormat=Дата поступления: {0:dd.MM.yyyy}}" 
+                                                       Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
+                                            <Button Name="OpenOrder" Style="{StaticResource ImageButton}">
+                                                <Image Source="/Sources/remove.png"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

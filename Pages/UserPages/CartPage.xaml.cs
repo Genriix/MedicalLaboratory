@@ -29,7 +29,6 @@ namespace MedicalLaboratory.Pages.UserPages
         private void LoadServices()
         {
             var services = ShoppingCart.selectedServices;
-
             CartItemsControl.ItemsSource = services;
         }
 

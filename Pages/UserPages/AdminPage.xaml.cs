@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalLaboratory.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace MedicalLaboratory.Pages.UserPages
         public AdminPage()
         {
             InitializeComponent();
+            LoadOrders();
+        }
+
+        private void LoadOrders()
+        {
+            var orders = Order.GetOrdersFromDB();
+            OrderItemsControl.ItemsSource = orders;
         }
     }
 }

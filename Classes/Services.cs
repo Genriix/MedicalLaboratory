@@ -37,7 +37,6 @@ namespace MedicalLaboratory.Classes
                     });
                 }
             }
-
             return services;
         }
 

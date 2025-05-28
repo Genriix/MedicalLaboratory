@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="Classes\CAPTCHA.cs" />
     <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\Services.cs" />
     <Compile Include="Classes\ShoppingCart.cs" />
     <Compile Include="Classes\User.cs" />
