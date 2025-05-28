@@ -1,10 +1,5 @@
 ﻿using MedicalLaboratory.Pages;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalLaboratory.Classes
 {
@@ -21,7 +16,6 @@ namespace MedicalLaboratory.Classes
         {
             return user_role_id;
         }
-
         public static void FoundUser(string login, string password)
         {
             using (SqlConnection connection = new SqlConnection(Manager.guestConnectionString))

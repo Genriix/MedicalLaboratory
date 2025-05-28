@@ -5,15 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MedicalLaboratory.Pages.UserPages"
       mc:Ignorable="d" 
-       d:DesignWidth="1200" d:DesignHeight="720"
+       d:DesignWidth="1280" d:DesignHeight="720"
       Title="AdminPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0"  Background="#81dbee"/>
+        <Border Grid.Column="0"  Background="#81dbee" Margin="10" CornerRadius="25" Padding="5">
+            <StackPanel>
+                <Button Style="{StaticResource BaseButton}" Content="Заказы" Width="358" Margin="5" IsEnabled="False"/>
+                <Button Style="{StaticResource BaseButton}" Content="Записи на приём" Width="358" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Учётные записи" Width="358" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Анализаторы" Width="358" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Услуги" Width="358" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Отчёты" Width="358" Margin="5"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

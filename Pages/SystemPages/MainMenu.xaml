@@ -8,14 +8,45 @@
       d:DesignWidth="1200" d:DesignHeight="720"
       Title="MainMenu">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <Grid Width="Auto">
+            <ItemsControl x:Name="ServicesItemsControl" HorizontalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-        <Grid Grid.Row="0" Background="#81dbee">
-            
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="200" Height="250" Margin="10" 
+                        Background="#81dbee" BorderBrush="LightGray" BorderThickness="1"
+                        CornerRadius="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Название -->
+                                <StackPanel Grid.Row="1" Margin="0 10">
+                                    <TextBlock Text="{Binding Name}" Foreground="White" FontWeight="Bold" TextAlignment="Center" FontSize="24" TextWrapping="Wrap"/>
+                                </StackPanel>
+
+                                <!-- Цена -->
+                                <Grid Grid.Row="2">
+                                    <Border Background="#045584" CornerRadius="5"/>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="{Binding Cost, StringFormat='Цена: ₽{0:N2}'}" Foreground="White" FontSize="20" FontWeight="Bold"/>
+                                    <Button Style="{StaticResource ImageButton}" HorizontalAlignment="Right" Name="SelectServiceButton" Click="SelectServiceButton_Click">
+                                        <Image Source="/Sources/shoppingbasket.png"/>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>

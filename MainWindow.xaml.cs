@@ -1,6 +1,7 @@
 ﻿using MedicalLaboratory.Classes;
 using MedicalLaboratory.Pages;
 using MedicalLaboratory.Pages.SystemPages;
+using MedicalLaboratory.Pages.UserPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,35 +30,68 @@ namespace MedicalLaboratory
             MainFrame.Navigate(new MainMenu());
             Manager.MainFrame = MainFrame;
         }
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.CanGoBack)
+            string currentPage = GetCurrentPage();
+
+            if (MainFrame.CanGoBack && (currentPage != "AdminPage" && currentPage != "LaboratorianPage" && currentPage != "LaboratorianResercherPage" && currentPage != "PatientPage"))
             {
                 Manager.MainFrame.GoBack();
             }
             else
             {
-
+                MainFrame.Navigate(new MainMenu());
             }
         }
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
-            string currentPage = MainFrame.Content.GetType().Name;
+            string currentPage = GetCurrentPage();
 
-            if (currentPage != "MainMenu")
+            if (MainFrame.CanGoBack)
             {
-                BtnExit.Content = "Назад";
+                BtnBack.IsEnabled = true;
             }
             else
             {
-                BtnExit.Content = "Выйти";
+                BtnBack.IsEnabled = false;
             }
 
+            if (currentPage == "MainMenu" || currentPage == "PatientPage")
+            {
+                Cart.IsEnabled = true;
+                Cart.Visibility = Visibility.Visible;
+            }
+            else if (currentPage == "CartPage")
+            {
+                Cart.IsEnabled = false;
+                Cart.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Cart.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void LogIn_Button_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new LoginPage());
+            if (User.GetUser_id() == 0)
+            {
+                Manager.MainFrame.Navigate(new LoginPage());
+            }
+            else
+            {
+                Manager.NavigateUserToHisPage();
+            }
+        }
+
+        private string GetCurrentPage()
+        {
+            return MainFrame.Content.GetType().Name;
+        }
+
+        private void Cart_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new CartPage());
         }
     }
 }
