@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0"  Background="#045584" Margin="10" CornerRadius="25" Padding="5">
+        <Border Grid.Column="0"  Background="{StaticResource Darcker}" Margin="10" CornerRadius="25" Padding="5">
             <StackPanel>
                 <Button Name="OrdersButton" Style="{StaticResource BaseButton}" Content="Заказы" Width="210" Margin="5" Click="OrdersButton_Click"/>
                 <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Записи на приём" Width="210" Margin="5"/>

@@ -66,7 +66,7 @@ namespace MedicalLaboratory
                 Cart.Content = $"Корзина ({ShoppingCart.selectedServices.Count})";
             }
 
-            if (Manager.currentUser.UserId != 0)
+            if (User.currentUser.UserId != 0)
             {
                 LogIn_Button.Content = "Открыть";
                 LogOut_Button.Visibility = Visibility.Visible;
@@ -100,7 +100,7 @@ namespace MedicalLaboratory
 
         private void LogIn_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Manager.currentUser.UserId == 0)
+            if (User.currentUser.UserId == 0)
             {
                 Manager.MainFrame.Navigate(new LoginPage());
             }
@@ -133,7 +133,7 @@ namespace MedicalLaboratory
 
         private void LogOut_Button_Click(object sender, RoutedEventArgs e)
         {
-            Manager.currentUser.LogOutUser();
+            User.currentUser.LogOutUser();
             if (GetCurrentPage() != "MainMenu")
             {
                 Manager.MainFrame.Navigate(new MainMenu());
