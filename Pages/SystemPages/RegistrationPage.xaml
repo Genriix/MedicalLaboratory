@@ -5,10 +5,43 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MedicalLaboratory.Pages.SystemPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignWidth="1200" d:DesignHeight="720"
       Title="RegistrationPage">
 
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <Border Background="{StaticResource Lighter}" CornerRadius="65" Margin="0,0,20,0" Width="270" Height="270">
+                    <Image Source="../../Sources/logo.png" Margin="20"/>
+                </Border>
+                <Border Background="{StaticResource Darcker}" CornerRadius="30" Margin="0,20,20,0" Width="270" Height="123">
+                    <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Center">
+                        <!--<Label Content="Medical Laboratory" HorizontalAlignment="Center"/>-->
+                        <Label Content="Нас выбрали уже" HorizontalAlignment="Center" Margin="0,0,0,-5"/>
+                        <Label Content="1000000000000000" HorizontalAlignment="Center" Margin="0,0,0,-10"/>
+                        <Label Content="пациентов" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <Border Background="{StaticResource Darcker}" CornerRadius="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="390">
+                    <StackPanel Orientation="Vertical" Margin="20,20,20,20">
+                        <Label Content="Введите ФИО" Margin="-6,0,0,-3"/>
+                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <Label Content="Введите логин" Margin="-6,0,0,-3"/>
+                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <Label Content="Введите пароль" Margin="-6,0,0,-3"/>
+                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <Label Content="Подтвердите пароль" Margin="-6,0,0,-3"/>
+                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource Lighter}" CornerRadius="30" HorizontalAlignment="Center" Margin="0,20,0,0" Width="390">
+                    <Button Style="{StaticResource BaseButton}" Content="Зарегистрироваться" Width="200" Margin="20"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

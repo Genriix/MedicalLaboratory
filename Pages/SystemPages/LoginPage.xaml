@@ -21,9 +21,9 @@
 
                 <StackPanel Margin="0,0,0,5">
                     <Label Content="Логин" HorizontalAlignment="Left" Width="60" Margin="0,0,0,-3"/>
-                    <TextBox Style="{StaticResource RoundedTextBox}" Name="Login" Text="" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <TextBox Style="{StaticResource RoundedTextBox}" Name="Login" HorizontalAlignment="Left" Margin="5,0,0,0" Width="150"/>
                     <Label Content="Пароль" HorizontalAlignment="Left" Width="74" Margin="0,0,0,-3"/>
-                    <PasswordBox Style="{StaticResource RoundedPasswordBox}" FontSize="20" Name="Password" Password="" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <PasswordBox Style="{StaticResource RoundedPasswordBox}" FontSize="20" Name="Password" HorizontalAlignment="Left" Margin="5,0,0,0" Width="150"/>
                 </StackPanel>
                 
                 <!--КАПЧА-->
@@ -38,8 +38,10 @@
                 </Border>
 
                 <Button Style="{StaticResource BaseButton}" Content="Войти" 
-                        HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click" Margin="5,10,5,0"/>
-                <TextBlock FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"><Hyperlink NavigateUri="RegistrationPage.xaml">Зарегистрироваться</Hyperlink></TextBlock>
+                        HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click" Margin="5,10,5,0" Width="150"/>
+                <TextBlock FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                    <Hyperlink NavigateUri="RegistrationPage.xaml">Зарегистрироваться</Hyperlink>
+                </TextBlock>
             </StackPanel>
         </Grid>
     </Border>
