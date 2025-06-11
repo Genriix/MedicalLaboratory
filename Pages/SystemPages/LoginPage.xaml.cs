@@ -1,5 +1,4 @@
 ﻿using MedicalLaboratory.Classes;
-using MedicalLaboratory.Pages.UserPages;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,13 +11,14 @@ namespace MedicalLaboratory.Pages
     public partial class LoginPage : Page
     {
         public static StringBuilder errors = new StringBuilder();
-        private CAPTCHA captcha = new CAPTCHA();
+        private readonly CAPTCHA captcha = new CAPTCHA();
 
         public LoginPage()
         {
             InitializeComponent();
             CapOut.IsEnabled = false; // Делаем текстбокс не активным
             captcha.CaptchaIsGenerate = false; // Мы не проходили капчу
+            Manager.CurrentPageName = null;
         }
 
         private void GenerateRandomSequence(object sender, RoutedEventArgs e)
@@ -28,9 +28,9 @@ namespace MedicalLaboratory.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User.FoundUser(Login.Text, Password.Password.ToString());
-            CaptchaTest();
-            if (LoginPage.IsErrorsEmpty())
+            User.currentUser.FoundUser(Login.Text, Password.Password.ToString());
+            //CaptchaTest();
+            if (IsErrorsEmpty())
             {
                 Manager.NavigateUserToHisPage();
                 Login.Text = "";
@@ -48,7 +48,7 @@ namespace MedicalLaboratory.Pages
             errors.Clear();
         }
 
-        private static bool IsErrorsEmpty()
+        private bool IsErrorsEmpty()
         {
             return errors.Length == 0;
         }

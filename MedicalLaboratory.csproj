@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -97,7 +97,7 @@
     <Compile Include="Classes\CAPTCHA.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Order.cs" />
-    <Compile Include="Classes\Services.cs" />
+    <Compile Include="Classes\Service.cs" />
     <Compile Include="Classes\ShoppingCart.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -112,7 +112,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserPages\AdminPage.xaml">
+    <Page Include="Pages\UserPages\AdminPages\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPages\AdminPages\AcountsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPages\AdminPages\AdminOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPages\AdminPages\ServicesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,15 +132,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserPages\LaboratorianPage.xaml">
+    <Page Include="Pages\UserPages\LaboratorianPages\LaboratorianPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserPages\LaboratorianResercherPage.xaml">
+    <Page Include="Pages\UserPages\LaboratorianResercherPages\LaboratorianResercherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserPages\PatientPage.xaml">
+    <Page Include="Pages\UserPages\PatientPages\PatientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,19 +152,28 @@
     <Compile Include="Pages\SystemPages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserPages\AdminPage.xaml.cs">
+    <Compile Include="Pages\UserPages\AdminPages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPages\AdminPages\AcountsPage.xaml.cs">
+      <DependentUpon>AcountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPages\AdminPages\AdminOrdersPage.xaml.cs">
+      <DependentUpon>AdminOrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPages\AdminPages\ServicesPage.xaml.cs">
+      <DependentUpon>ServicesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserPages\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserPages\LaboratorianPage.xaml.cs">
+    <Compile Include="Pages\UserPages\LaboratorianPages\LaboratorianPage.xaml.cs">
       <DependentUpon>LaboratorianPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserPages\LaboratorianResercherPage.xaml.cs">
+    <Compile Include="Pages\UserPages\LaboratorianResercherPages\LaboratorianResercherPage.xaml.cs">
       <DependentUpon>LaboratorianResercherPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserPages\PatientPage.xaml.cs">
+    <Compile Include="Pages\UserPages\PatientPages\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

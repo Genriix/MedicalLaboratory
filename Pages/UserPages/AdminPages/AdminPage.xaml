@@ -1,0 +1,33 @@
+﻿<Page x:Class="MedicalLaboratory.Pages.UserPages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MedicalLaboratory.Pages.UserPages"
+      mc:Ignorable="d" 
+       d:DesignWidth="1280" d:DesignHeight="598"
+      Title="AdminPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"  Background="#045584" Margin="10" CornerRadius="25" Padding="5">
+            <StackPanel>
+                <Button Name="OrdersButton" Style="{StaticResource BaseButton}" Content="Заказы" Width="210" Margin="5" Click="OrdersButton_Click"/>
+                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Записи на приём" Width="210" Margin="5"/>
+                <Button Name="AccountsButton" Style="{StaticResource BaseButton}" Content="Учётные записи" Width="210" Margin="5" Click="AccountsButton_Click"/>
+                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Анализаторы" Width="210" Margin="5"/>
+                <Button Name="ServicesButton" Style="{StaticResource BaseButton}" Content="Услуги" Width="210" Margin="5" Click="ServicesButton_Click"/>
+                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Отчёты" Width="210" Margin="5"/>
+            </StackPanel>
+        </Border>
+
+
+        <ScrollViewer Grid.Column="1">
+            <Frame Name="AdminFrame" NavigationUIVisibility="Hidden"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,2 +1,8 @@
 darcker: 045584
 lighter: 81dbee
+
+guestPass: Q]a2/6BqG@:H@g]N
+adminPass: rj8QEU)Qf%sYu~7+
+
+Standart_Page_Width: 1280
+Standart_Page_Height: 598

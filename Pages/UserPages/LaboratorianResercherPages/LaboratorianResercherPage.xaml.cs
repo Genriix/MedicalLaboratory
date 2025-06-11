@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalLaboratory.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,15 @@ using System.Windows.Shapes;
 namespace MedicalLaboratory.Pages.UserPages
 {
     /// <summary>
-    /// Логика взаимодействия для LaboratorianPage.xaml
+    /// Логика взаимодействия для LaboratorianResercherPage.xaml
     /// </summary>
-    public partial class LaboratorianPage : Page
+    public partial class LaboratorianResercherPage : Page
     {
-        public LaboratorianPage()
+        public LaboratorianResercherPage()
         {
             InitializeComponent();
+            Manager.LaboratorianResercherFrame = LaboratorianResercherFrame;
+            Manager.CurrentPageName = "Лаборант-исследователь";
         }
     }
 }

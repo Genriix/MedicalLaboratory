@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalLaboratory.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MedicalLaboratory.Pages.UserPages
         public PatientPage()
         {
             InitializeComponent();
+            Manager.CurrentPageName = "Личный кабинет";
         }
     }
 }

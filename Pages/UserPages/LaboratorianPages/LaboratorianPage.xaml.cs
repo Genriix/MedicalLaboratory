@@ -1,4 +1,5 @@
 ﻿using MedicalLaboratory.Classes;
+using MedicalLaboratory.Pages.UserPages.AdminPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,20 +18,19 @@ using System.Windows.Shapes;
 namespace MedicalLaboratory.Pages.UserPages
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPage.xaml
+    /// Логика взаимодействия для LaboratorianPage.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class LaboratorianPage : Page
     {
-        public AdminPage()
+        public LaboratorianPage()
         {
             InitializeComponent();
-            LoadOrders();
+            Manager.LaboratorianFrame = LaboratorianFrame;
+            Manager.CurrentPageName = "Лаборант";
         }
-
-        private void LoadOrders()
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            var orders = Order.GetOrdersFromDB();
-            OrderItemsControl.ItemsSource = orders;
+            Manager.LaboratorianFrame.Navigate(new AdminOrdersPage());
         }
     }
 }

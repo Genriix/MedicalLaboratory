@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalLaboratory.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MedicalLaboratory.Pages.UserPages
+namespace MedicalLaboratory.Pages.UserPages.AdminPages
 {
     /// <summary>
-    /// Логика взаимодействия для LaboratorianResercherPage.xaml
+    /// Логика взаимодействия для Acounts.xaml
     /// </summary>
-    public partial class LaboratorianResercherPage : Page
+    public partial class AcountsPage : Page
     {
-        public LaboratorianResercherPage()
+        public AcountsPage()
         {
             InitializeComponent();
+            LoadAccounts();
+        }
+        private void LoadAccounts()
+        {
+            var accounts = User.GetUsersFromDB();
+            AccountsItemsControl.ItemsSource = accounts;
         }
     }
 }

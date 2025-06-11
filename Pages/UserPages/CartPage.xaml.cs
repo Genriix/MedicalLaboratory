@@ -1,18 +1,6 @@
 ﻿using MedicalLaboratory.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MedicalLaboratory.Pages.UserPages
 {
@@ -25,6 +13,8 @@ namespace MedicalLaboratory.Pages.UserPages
         {
             InitializeComponent();
             LoadServices();
+            LoadCost();
+            Manager.CurrentPageName = "Корзина";
         }
         private void LoadServices()
         {
@@ -35,8 +25,19 @@ namespace MedicalLaboratory.Pages.UserPages
         private void RemoveService_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            Services.RemoveService(button);
+            ShoppingCart.RemoveService(button);
             CartItemsControl.Items.Refresh();
+            LoadCost();
+        }
+        private void LoadCost()
+        {
+            decimal finalCost = 0;
+            for (int i = 0; i < ShoppingCart.selectedServices.Count; i++) 
+            {
+                Service service = ShoppingCart.selectedServices[i];
+                finalCost += service.Cost;
+            }
+            FinalCost.Text = $"{(float)finalCost}₽";
         }
     }
 }

@@ -20,18 +20,45 @@
                 <TextBlock Text="Медицинская Лаборатория" FontSize="34" Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource BaseButton}" Width="88" Margin="10,10,0,10" Content="Корзина" Name="Cart" Click="Cart_Click"/>
-                <Button Style="{StaticResource BaseButton}" Content="Личный кабинет" Name="LogIn_Button" Click="LogIn_Button_Click"/>
+                <Button Style="{StaticResource BaseButton}" Width="120" Margin="10,10,0,10" Content="Корзина" Name="Cart" Click="Cart_Click"/>
+                <Button Style="{StaticResource BaseButton}" Width="160" Name="ShowBorder" Content="Личный кабинет" HorizontalAlignment="Right" Margin="10,0,22,0" Click="ShowBorder_Click"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1" Background="Gray"/>
 
-        <Grid Grid.Row="2" Background="#045584">
-            <Button Style="{StaticResource ImageButton}" Name="BtnBack" Click="BtnBack_Click" HorizontalAlignment="Left" Margin="21,5,0,5">
-                <Image Source="Sources/left-arrow.png"/>
-            </Button>
+        <Grid Grid.Row="2" Background="#045584" ClipToBounds="False">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource ImageButton}" Name="BtnBack" Click="BtnBack_Click" HorizontalAlignment="Left" Margin="21,5,21,5">
+                    <Image Source="Sources/left-arrow.png"/>
+                </Button>
+
+                <TextBlock Name="CurrentPageBlock" Foreground="White" FontSize="30" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
         <Frame Grid.Row="3" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Name="MainFrame"/>
+
+        <Popup x:Name="HiddenBorderPopup" 
+            PlacementTarget="{Binding ElementName=ShowBorder}" 
+            Placement="Bottom"
+            HorizontalOffset="-10"
+               VerticalOffset="10"
+            StaysOpen="False"
+            AllowsTransparency="True"
+            PopupAnimation="Slide">
+            
+            <Border Width="180" 
+                    Height="98" 
+                    Background="#045584" 
+                    CornerRadius="25"
+                    BorderBrush="White"
+                    BorderThickness="2">
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+                    <Button Style="{StaticResource BaseButton}" Content="Войти" Name="LogIn_Button" Click="LogIn_Button_Click" Margin="5"/>
+                    <Button Style="{StaticResource BaseButton}" Content="Выйти" Name="LogOut_Button" Click="LogOut_Button_Click" Margin="5"/>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Window>

@@ -16,11 +16,12 @@ namespace MedicalLaboratory.Pages.SystemPages
         {
             InitializeComponent();
             LoadServices();
+            Manager.CurrentPageName = "Главная страница";
         }
 
         private void LoadServices()
         {
-            var services = Services.GetServicesFromDB();
+            var services = Service.GetServicesFromDB();
             ServicesItemsControl.ItemsSource = services;
         }
 
@@ -28,7 +29,8 @@ namespace MedicalLaboratory.Pages.SystemPages
         {
             // Получаем кнопку, которая вызвала событие
             Button button = (Button)sender;
-            Services.AddService(button);
+            ShoppingCart.AddService(button);
+            Manager.MainFrame.NavigationService.Refresh();
         }
     }
 }

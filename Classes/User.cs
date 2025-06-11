@@ -1,28 +1,28 @@
 ﻿using MedicalLaboratory.Pages;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace MedicalLaboratory.Classes
 {
     internal class User
     {
-        private static int user_id;
-        private static int user_role_id;
+        public int UserId { get; set; }
+        public int UserRoleId { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string MName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string RoleName { get; set; }
 
-        public static int GetUser_id()
-        {
-            return user_id;
-        }
-        public static int GetUserRole_id()
-        {
-            return user_role_id;
-        }
-        public static void FoundUser(string login, string password)
+        public static User currentUser = new User();
+
+        public void FoundUser(string login, string password)
         {
             using (SqlConnection connection = new SqlConnection(Manager.guestConnectionString))
             {
                 int founded_id = 0;
                 int founded_role = 0;
-                string founded_password = "";
 
                 connection.Open();
 
@@ -59,8 +59,8 @@ namespace MedicalLaboratory.Classes
                             //founded_password += reader.GetString(0);
                             if (password == reader.GetString(0))
                             {
-                                user_id = founded_id;
-                                user_role_id = founded_role;
+                                UserId = founded_id;
+                                UserRoleId = founded_role;
                             }
                             else
                             {
@@ -70,6 +70,39 @@ namespace MedicalLaboratory.Classes
                     }
                 }
             }
+        }
+        public static List<User> GetUsersFromDB()
+        {
+            List<User> users = new List<User>();
+
+            string query = "Select [User].*, name from [User] join User_Type on [User].User_Type_ID = User_Type.ID";
+
+            using (SqlConnection connection = new SqlConnection(Manager.adminConnectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    users.Add(new User
+                    {
+                        UserId = (int)reader["ID"],
+                        UserRoleId = (int)reader["User_Type_ID"],
+                        FName = (string)reader["f_name"],
+                        LName = (string)reader["l_name"],
+                        MName = (string)reader["m_name"],
+                        PhoneNumber = (string)reader["phone_number"],
+                        RoleName = (string)reader["name"]
+                    });
+                }
+            }
+            return users;
+        }
+        public void LogOutUser()
+        {
+            UserId = 0;
+            UserRoleId = 0;
         }
     }
 }
