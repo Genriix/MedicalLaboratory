@@ -28,7 +28,12 @@ namespace MedicalLaboratory.Classes
                 case 1: MainFrame.Navigate(new AdminPage()); break;
                 case 2: MainFrame.Navigate(new LaboratorianPage()); break;
                 case 3: MainFrame.Navigate(new LaboratorianResercherPage()); break;
-                case 4: MainFrame.Navigate(new PatientPage()); break;
+                case 4:
+                    {
+                        Patient.currentPatient = Patient.GetPatientsFromDB().FirstOrDefault(p => p.UserId == User.currentUser.UserId);
+                        MainFrame.Navigate(new PatientPage()); 
+                        break;
+                    }
             }
         }
     }

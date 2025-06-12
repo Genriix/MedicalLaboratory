@@ -7,7 +7,117 @@
       mc:Ignorable="d" 
       d:DesignWidth="1200" d:DesignHeight="720"
       Title="PatientPage">
-    
-    
-    
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="{StaticResource Darcker}" Width="250" Height="250" CornerRadius="30" Margin="10" VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="20" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock Name="Login" Text="Login" Foreground="White"/>
+                    <TextBlock Name="Email" Text="Email" Foreground="White"/>
+                    <TextBlock Name="PhoneNumber" Text="PhoneNumber" Foreground="White"/>
+                    <TextBlock Name="BurthDate" Text="BurthDate" Foreground="White"/>
+                    <TextBlock Name="Passport" Text="Passport" Foreground="White"/>
+                </StackPanel>
+
+                <Button Grid.Row="1" Style="{StaticResource BaseButton}" Content="Изменить данные" Width="210" Margin="0"/>
+
+            </Grid>
+        </Border>
+        
+        <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Top">
+            
+            <Border Background="{StaticResource Lighter}" Width="600" Height="70" CornerRadius="30" Margin="0,0,0,10">
+                <TextBlock Name="FullName" Text="Фамилия Имя Отчество" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="White" FontSize="30"/>
+            </Border>
+            
+            <Border Name="AdminssionsBorder" Background="{StaticResource Darcker}" Width="600" CornerRadius="30" Margin="0,10,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Записи на приём" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="White" FontSize="26"/>
+
+                </Grid>
+            </Border>
+            
+            <Border Name="OrdersBorder" Background="{StaticResource Darcker}" Width="600" CornerRadius="30" Margin="0,10,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Ваши заказы" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="White" FontSize="26"/>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="270"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Text="Номер" 
+                                                   Foreground="White" FontSize="24"/>
+
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
+                                                       Text="Дата" 
+                                                       Foreground="White" FontSize="24"/>
+
+                            <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
+                                <Image Source="/Sources/remove.png"/>
+                            </Button>
+                        </Grid>
+                        
+                        <ItemsControl x:Name="OrderItemsControl" Grid.Row="1">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="50" Margin="0,5,0,0" Background="{StaticResource Lighter}" BorderBrush="LightGray" CornerRadius="25">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Text="{Binding Id}" 
+                                                       Foreground="White" FontSize="24"/>
+
+                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="{Binding ServicesName}"
+                                                       Foreground="White"/>
+
+                                            <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
+                                                           Text="{Binding CreationDate, StringFormat= ' {0:dd.MM.yyyy}'}" 
+                                                           Foreground="White" FontSize="24"/>
+
+                                            <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
+                                                <Image Source="/Sources/remove.png"/>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </StackPanel>
+    </StackPanel>
 </Page>
