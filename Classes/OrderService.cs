@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalLaboratory.Classes
 {
@@ -23,7 +20,12 @@ namespace MedicalLaboratory.Classes
         {
             List<OrderService> orderServices = new List<OrderService>();
 
-            string query = "Select Order_Service.*, Status.name from Order_Service join Status on Status_ID = Status.ID";
+            string query = @"
+                Select Order_Service.*, 
+                Status.name 
+                from Order_Service 
+                join Status 
+                on Status_ID = Status.ID";
 
             using (SqlConnection connection = new SqlConnection(Manager.adminConnectionString))
             {
@@ -48,7 +50,6 @@ namespace MedicalLaboratory.Classes
                 }
             }
             return orderServices;
-
         }
     }
 }

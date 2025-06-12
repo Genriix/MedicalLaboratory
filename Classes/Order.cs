@@ -15,8 +15,6 @@ namespace MedicalLaboratory.Classes
         public List<Service> Services = new List<Service>();
         public string ServicesName { get; set; }
 
-        public static Order ordersInDB = new Order();
-
         public static List<Order> GetOrdersFromDB()
         {
             List<Order> orders = new List<Order>(); // Все Order из БД
