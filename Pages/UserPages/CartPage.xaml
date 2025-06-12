@@ -69,7 +69,7 @@
 
                     <Image Grid.Row="1" Source="/Sources/logo.png" Height="120" Width="120" Margin="10"/>
 
-                    <Button Grid.Row="2" Style="{StaticResource BaseButton}" Content="Оформить заказ" Margin="0" Height="50" Width="280"/>
+                    <Button Grid.Row="2" Style="{StaticResource BaseButton}" Name="CreateOrderButton" Content="Оформить заказ" Margin="0" Height="50" Width="280" Click="CreateOrderButton_Click"/>
                 </Grid>
             </Border>
             

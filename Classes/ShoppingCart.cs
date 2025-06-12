@@ -10,18 +10,14 @@ namespace MedicalLaboratory.Classes
     internal static class ShoppingCart
     {
         public static List<Service> selectedServices = new List<Service>();
-        public static void AddService(Button button)
+        public static void AddService(Service selectedService)
         {
-            // Получаем объект Services, привязанный к этому элементу
-            Service selectedService = (Service)button.DataContext;
             selectedServices.Add(selectedService);
         }
 
-        public static void RemoveService(Button button)
+        public static void RemoveService(Service selectedService)
         {
-            Service selectedService = (Service)button.DataContext;
             selectedServices.Remove(selectedService);
         }
-
     }
 }

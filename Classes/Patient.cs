@@ -38,5 +38,10 @@ namespace MedicalLaboratory.Classes
             return patients;
         }
 
+        public void LogOutPatient()
+        {
+            Id = 0;
+            UserId = 0;
+        }
     }
 }

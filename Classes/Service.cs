@@ -33,32 +33,16 @@ namespace MedicalLaboratory.Classes
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    try
+                    services.Add(new Service
                     {
-                        services.Add(new Service
-                        {
-                            Id = (int)reader["ID"],
-                            AnalyzerTypeId = (int)reader["Analyzer_Type_ID"],
-                            Name = reader["name"].ToString(),
-                            Cost = (decimal)reader["cost"],
-                            ResultMin = (float)reader["result_min"],
-                            ResultMax = (float)reader["result_max"],
-                            AnalyzerName = reader["analyzer_name"].ToString(),
-                        });
-                    }
-                    catch 
-                    {
-                        services.Add(new Service
-                        {
-                            Id = (int)reader["ID"],
-                            AnalyzerTypeId = (int)reader["Analyzer_Type_ID"],
-                            Name = reader["name"].ToString(),
-                            Cost = (decimal)reader["cost"],
-                            ResultMin = 0,
-                            ResultMax = 0,
-                            AnalyzerName = reader["analyzer_name"].ToString(),
-                        });
-                    }
+                        Id = (int)reader["ID"],
+                        AnalyzerTypeId = (int)reader["Analyzer_Type_ID"],
+                        Name = reader["name"].ToString(),
+                        Cost = (decimal)reader["cost"],
+                        ResultMin = reader["result_min"] != DBNull.Value ? (float)reader["result_min"] : 0,
+                        ResultMax = reader["result_max"] != DBNull.Value ? (float)reader["result_max"] : 0,
+                        AnalyzerName = reader["analyzer_name"].ToString(),
+                    });
                 }
             }
             return services;

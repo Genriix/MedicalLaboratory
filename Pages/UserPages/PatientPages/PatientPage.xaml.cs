@@ -26,8 +26,8 @@ namespace MedicalLaboratory.Pages.UserPages
             InitializeComponent();
             Manager.CurrentPageName = "Личный кабинет";
 
-            List<Order> userOrders = Order.GetOrdersFromDB().Where(order => order.PatientId == Patient.currentPatient.Id).ToList();
-            OrderItemsControl.ItemsSource = userOrders;
+            List<Order> patientOrders = Order.GetOrdersFromDB().Where(order => order.PatientId == Patient.currentPatient.Id).ToList();
+            OrderItemsControl.ItemsSource = patientOrders;
         }
     }
 }

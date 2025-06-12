@@ -27,9 +27,9 @@ namespace MedicalLaboratory.Pages.SystemPages
 
         private void SelectServiceButton_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем кнопку, которая вызвала событие
             Button button = (Button)sender;
-            ShoppingCart.AddService(button);
+            Service selectedService = (Service)button.DataContext;
+            ShoppingCart.AddService(selectedService);
             Manager.MainFrame.NavigationService.Refresh();
         }
     }

@@ -15,6 +15,8 @@ namespace MedicalLaboratory.Classes
         public List<Service> Services = new List<Service>();
         public string ServicesName { get; set; }
 
+        public static Order ordersInDB = new Order();
+
         public static List<Order> GetOrdersFromDB()
         {
             List<Order> orders = new List<Order>(); // Все Order из БД
@@ -38,11 +40,12 @@ namespace MedicalLaboratory.Classes
                 }
             }
 
+            List<OrderService> orderServices = OrderService.GetOrderServicesFromDB();
             List<Service> service = Service.GetServicesFromDB();
 
             for (int i = 0; orders.Count > i; i++)
             {
-                orders[i].OrderServices = OrderService.GetOrderServicesFromDB(orders[i].Id);
+                orders[i].OrderServices = orderServices.Where(os => os.OrderId == orders[i].Id).ToList();
 
                 if (orders[i].OrderServices != null && orders[i].OrderServices.Count > 0)
                 {
@@ -58,14 +61,7 @@ namespace MedicalLaboratory.Classes
                     }
                     orders[i].ServicesName = string.Join(", ", orders[i].Services.Select(s => s.Name));
                 }
-
-                //    for (int j = 0; orders[i].OrderServices.Count > j; j++)
-                //{
-                //    orders[i].Services.Add(service.FirstOrDefault(s => s.Id == orders[i].OrderServices[j].ServiceId));
-                //    orders[i].ServicesName = orders[i].Services[j].Name;
-                //}
             }
-
             return orders;
         }
     }

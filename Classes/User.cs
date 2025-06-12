@@ -103,6 +103,7 @@ namespace MedicalLaboratory.Classes
         {
             UserId = 0;
             UserRoleId = 0;
+            Patient.currentPatient.LogOutPatient();
         }
     }
 }

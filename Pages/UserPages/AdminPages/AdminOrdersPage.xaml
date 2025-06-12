@@ -26,6 +26,9 @@
                 <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Text="ID" 
                                                    Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
 
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="Услуги в заказе" 
+                                                   Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
+
                 <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
                                                        Text="Дата поступления" 
                                                        Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
@@ -46,11 +49,14 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="270"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Text="{Binding Id}" 
+                                                   Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
+
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="{Binding ServicesName}" 
                                                    Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
 
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
