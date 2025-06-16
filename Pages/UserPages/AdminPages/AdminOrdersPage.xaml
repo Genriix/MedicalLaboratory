@@ -64,7 +64,7 @@
                                                        Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
 
                             <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
-                                <Image Source="/Sources/remove.png"/>
+                                <Image Source="/Sources/more.png"/>
                             </Button>
                         </Grid>
                     </Border>

@@ -29,7 +29,7 @@
             </Grid>
         </Border>
         
-        <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Top">
+        <StackPanel Orientation="Vertical" Margin="10,10,0,0" VerticalAlignment="Top">
             
             <Border Background="{StaticResource Lighter}" Width="600" Height="70" CornerRadius="30" Margin="0,0,0,10">
                 <TextBlock Name="FullName" Text="Фамилия Имя Отчество" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="White" FontSize="30"/>
@@ -47,7 +47,7 @@
                 </Grid>
             </Border>
             
-            <Border Name="OrdersBorder" Background="{StaticResource Darcker}" Width="600" CornerRadius="30" Margin="0,10,0,10">
+            <Border Name="OrdersBorder" Background="{StaticResource Darcker}" Width="600" CornerRadius="30" Margin="0,10,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"/>
@@ -71,13 +71,9 @@
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
                                                        Text="Дата" 
                                                        Foreground="White" FontSize="24"/>
-
-                            <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
-                                <Image Source="/Sources/remove.png"/>
-                            </Button>
                         </Grid>
                         
-                        <ItemsControl x:Name="OrderItemsControl" Grid.Row="1">
+                        <ItemsControl x:Name="OrderItemsControl" Grid.Row="1" Margin="10,0,10,10">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Vertical"/>
@@ -106,7 +102,7 @@
                                                            Foreground="White" FontSize="24"/>
 
                                             <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
-                                                <Image Source="/Sources/remove.png"/>
+                                                <Image Source="/Sources/more.png"/>
                                             </Button>
                                         </Grid>
                                     </Border>
