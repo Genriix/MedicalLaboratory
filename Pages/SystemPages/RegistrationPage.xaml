@@ -9,7 +9,7 @@
       Title="RegistrationPage">
 
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="260,0,0,0">
             <StackPanel Orientation="Vertical">
                 <Border Background="{StaticResource Lighter}" CornerRadius="65" Margin="0,0,20,0" Width="270" Height="270">
                     <Image Source="../../Sources/logo.png" Margin="20"/>
@@ -18,7 +18,7 @@
                     <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Center">
                         <!--<Label Content="Medical Laboratory" HorizontalAlignment="Center"/>-->
                         <Label Content="Нас выбрали уже" HorizontalAlignment="Center" Margin="0,0,0,-5"/>
-                        <Label Content="1000000000000000" HorizontalAlignment="Center" Margin="0,0,0,-10"/>
+                        <Label Content="1,000,000,000,000,000" HorizontalAlignment="Center" Margin="0,0,0,-10"/>
                         <Label Content="пациентов" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
@@ -28,18 +28,20 @@
                 <Border Background="{StaticResource Darcker}" CornerRadius="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="390">
                     <StackPanel Orientation="Vertical" Margin="20,20,20,20">
                         <Label Content="Введите ФИО" Margin="-6,0,0,-3"/>
-                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <TextBox Name="FullNameBox" Style="{StaticResource RoundedTextBox}" Width="350"/>
                         <Label Content="Введите логин" Margin="-6,0,0,-3"/>
-                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <TextBox Name="LoginBox" Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <Label Content="Введите номер телефона" Margin="-6,0,0,-3"/>
+                        <TextBox Name="PhoneNumberBox" Style="{StaticResource RoundedTextBox}" Width="350"/>
                         <Label Content="Введите пароль" Margin="-6,0,0,-3"/>
-                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <PasswordBox Name="PasswordPasswordBox" Style="{StaticResource RoundedPasswordBox}" Width="350"/>
                         <Label Content="Подтвердите пароль" Margin="-6,0,0,-3"/>
-                        <TextBox Style="{StaticResource RoundedTextBox}" Width="350"/>
+                        <PasswordBox Name="ConfirmPasswordPasswordBox" Style="{StaticResource RoundedPasswordBox}" Width="350"/>
                     </StackPanel>
                 </Border>
 
                 <Border Background="{StaticResource Lighter}" CornerRadius="30" HorizontalAlignment="Center" Margin="0,20,0,0" Width="390">
-                    <Button Style="{StaticResource BaseButton}" Content="Зарегистрироваться" Width="200" Margin="20"/>
+                    <Button Style="{StaticResource BaseButton}" Name="RegistratePatientButton" Content="Зарегистрироваться" Width="200" Margin="20" Click="RegistratePatientButton_Click"/>
                 </Border>
             </StackPanel>
         </StackPanel>

@@ -1,4 +1,5 @@
 ﻿using MedicalLaboratory.Classes;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +29,10 @@ namespace MedicalLaboratory.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User.currentUser.FoundUser(Login.Text, Password.Password.ToString());
+            if (User.IsUserInBD(Login.Text, Password.Password.ToString()))
+            {
+                User.currentUser = User.GetUsersFromDB().FirstOrDefault(u => u.Login == Login.Text);
+            }
             //CaptchaTest();
             if (IsErrorsEmpty())
             {

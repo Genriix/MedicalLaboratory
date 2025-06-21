@@ -26,7 +26,8 @@ namespace MedicalLaboratory.Classes
                 case 3: MainFrame.Navigate(new LaboratorianResercherPage()); break;
                 case 4:
                     {
-                        Patient.currentPatient = Patient.GetPatientsFromDB().FirstOrDefault(p => p.UserId == User.currentUser.UserId);
+                        Patient founedPatient = Patient.GetPatientsFromDB().FirstOrDefault(p => p.UserId == User.currentUser.UserId);
+                        Patient.currentPatient = founedPatient ?? null;
                         MainFrame.Navigate(new PatientPage()); 
                         break;
                     }

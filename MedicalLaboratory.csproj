@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -86,7 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MedicalLaboratoryWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -102,8 +102,8 @@
     <Compile Include="Classes\Service.cs" />
     <Compile Include="Classes\ShoppingCart.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MedicalLaboratoryWindow.xaml.cs">
+      <DependentUpon>MedicalLaboratoryWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\SystemPages\LoginPage.xaml">
@@ -146,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UserPages\PatientPages\ChangePatientDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UserPages\PatientPages\PatientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +185,9 @@
     </Compile>
     <Compile Include="Pages\UserPages\LaboratorianResercherPages\LaboratorianResercherPage.xaml.cs">
       <DependentUpon>LaboratorianResercherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPages\PatientPages\ChangePatientDataPage.xaml.cs">
+      <DependentUpon>ChangePatientDataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserPages\PatientPages\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>

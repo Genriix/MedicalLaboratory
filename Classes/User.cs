@@ -1,4 +1,5 @@
 ﻿using MedicalLaboratory.Pages;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -8,6 +9,8 @@ namespace MedicalLaboratory.Classes
     {
         public int UserId { get; set; }
         public int UserRoleId { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string MName { get; set; }
@@ -16,12 +19,11 @@ namespace MedicalLaboratory.Classes
 
         public static User currentUser = new User();
 
-        public void FoundUser(string login, string password)
+        public static bool IsUserInBD(string login, string password)
         {
             using (SqlConnection connection = new SqlConnection(Manager.guestConnectionString))
             {
                 int founded_id = 0;
-                int founded_role = 0;
 
                 connection.Open();
 
@@ -35,7 +37,6 @@ namespace MedicalLaboratory.Classes
                         if (reader.Read())
                         {
                             founded_id = reader.GetInt32(0); // Получаем значение столбца id
-                            founded_role = reader.GetInt32(1);
                         }
                         else
                         {
@@ -55,11 +56,9 @@ namespace MedicalLaboratory.Classes
                     {
                         if (reader.Read())
                         {
-                            //founded_password += reader.GetString(0);
                             if (password == reader.GetString(0))
                             {
-                                UserId = founded_id;
-                                UserRoleId = founded_role;
+                                return true;
                             }
                             else
                             {
@@ -68,6 +67,7 @@ namespace MedicalLaboratory.Classes
                         }
                     }
                 }
+                return false;
             }
         }
         public static List<User> GetUsersFromDB()
@@ -88,9 +88,11 @@ namespace MedicalLaboratory.Classes
                     {
                         UserId = (int)reader["ID"],
                         UserRoleId = (int)reader["User_Type_ID"],
+                        Login = (string)reader["login"],
+                        Password = (string)reader["password"],
                         FName = (string)reader["f_name"],
                         LName = (string)reader["l_name"],
-                        MName = (string)reader["m_name"],
+                        MName = reader["m_name"] != DBNull.Value ? (string)reader["m_name"] : "",
                         PhoneNumber = (string)reader["phone_number"],
                         RoleName = (string)reader["name"]
                     });
@@ -102,7 +104,7 @@ namespace MedicalLaboratory.Classes
         {
             UserId = 0;
             UserRoleId = 0;
-            Patient.currentPatient.LogOutPatient();
+            Patient.currentPatient?.LogOutPatient();
         }
     }
 }

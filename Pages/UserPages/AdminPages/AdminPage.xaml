@@ -17,11 +17,11 @@
         <Border Grid.Column="0"  Background="{StaticResource Darcker}" Margin="10" CornerRadius="25" Padding="5">
             <StackPanel>
                 <Button Name="OrdersButton" Style="{StaticResource BaseButton}" Content="Заказы" Width="210" Margin="5" Click="OrdersButton_Click"/>
-                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Записи на приём" Width="210" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Записи на приём" Width="210" Margin="5" Visibility="Collapsed"/>
                 <Button Name="AccountsButton" Style="{StaticResource BaseButton}" Content="Учётные записи" Width="210" Margin="5" Click="AccountsButton_Click"/>
-                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Анализаторы" Width="210" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Анализаторы" Width="210" Margin="5" Visibility="Collapsed"/>
                 <Button Name="ServicesButton" Style="{StaticResource BaseButton}" Content="Услуги" Width="210" Margin="5" Click="ServicesButton_Click"/>
-                <Button IsEnabled="False" Style="{StaticResource BaseButton}" Content="Отчёты" Width="210" Margin="5"/>
+                <Button Style="{StaticResource BaseButton}" Content="Отчёты" Width="210" Margin="5"/>
             </StackPanel>
         </Border>
 

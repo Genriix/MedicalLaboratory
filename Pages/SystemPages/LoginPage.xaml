@@ -28,7 +28,7 @@
                 
                 <!--КАПЧА-->
 
-                <Border Background="White" CornerRadius="15" Margin="0,5,0,5" Visibility="Collapsed">
+                <Border Background="White" CornerRadius="15" Margin="0,5,0,5" Visibility="Visible">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,7">
                         <Label Content="vladisCAPTCHA" Height="auto" Foreground="{StaticResource Darcker}" FontSize="20" Margin="-4,0,10,-3"/>
                         <Button Style="{StaticResource BaseButton}" Content="Сгенерировать" Click="GenerateRandomSequence" Margin="0,5,0,5"/>

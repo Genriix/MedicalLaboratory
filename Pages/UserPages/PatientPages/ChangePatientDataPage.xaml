@@ -1,0 +1,67 @@
+﻿<Page x:Class="MedicalLaboratory.Pages.UserPages.PatientPages.ChangePatientDataPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MedicalLaboratory.Pages.UserPages.PatientPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="ChangePatientDataPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10" VerticalAlignment="Center" Height="370">
+            <Border Background="{StaticResource Darcker}" CornerRadius="30" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                    <TextBlock Text="Основные данные" FontSize="35" Foreground="White" HorizontalAlignment="Center"/>
+                    <Label Content="Дата рождения"/>
+                    <TextBox Name="BurthDateBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Номер паспорта"/>
+                    <TextBox Name="PassportBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Электронная почта"/>
+                    <TextBox Name="EmailBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Номер телефона"/>
+                    <TextBox Name="PhoneNumberBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10" VerticalAlignment="Center" Height="370">
+            <Border Background="{StaticResource Darcker}" CornerRadius="30">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                    <TextBlock Text="Изменить пароль" FontSize="35" Foreground="White" HorizontalAlignment="Center"/>
+                    <Label Content="Старый пароль"/>
+                    <TextBox Name="OldPassword" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Новый пароль"/>
+                    <TextBox Name="NewPassword" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Подтвердите пароль"/>
+                    <TextBox Name="ConfirmPassword" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                </StackPanel>
+            </Border>
+            
+            <Button Style="{StaticResource BaseButton}" Content="Сохранить изменения" Name="SaveChangesButton" Click="SaveChangesButton_Click" Background="{StaticResource Darcker}" Foreground="White" Width="200" HorizontalAlignment="Center"/>
+        
+        </StackPanel>
+
+        <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10" VerticalAlignment="Center" Height="370">
+            <Border Background="{StaticResource Lighter}" CornerRadius="30">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                    <TextBlock Text="Страховой полис" FontSize="35" Foreground="White" HorizontalAlignment="Center"/>
+                    <Label Content="Страховой номер"/>
+                    <TextBox Name="InsuranceNumberBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Тип страховки"/>
+                    <TextBox Name="InsuranceTypeBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                    <Label Content="Страховая компания"/>
+                    <TextBox Name="InsuranceCompanyBox" Style="{StaticResource RoundedTextBox}" Width="250"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

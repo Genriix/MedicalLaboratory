@@ -1,6 +1,10 @@
 ﻿using MedicalLaboratory.Classes;
+using MedicalLaboratory.Pages.UserPages.PatientPages;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MedicalLaboratory.Pages.UserPages
@@ -15,8 +19,38 @@ namespace MedicalLaboratory.Pages.UserPages
             InitializeComponent();
             Manager.CurrentPageName = "Личный кабинет";
 
-            List<Order> patientOrders = Order.GetOrdersFromDB().Where(order => order.PatientId == Patient.currentPatient.Id).ToList();
-            OrderItemsControl.ItemsSource = patientOrders;
+            if (Patient.currentPatient != null)
+            {
+                List<Order> patientOrders = Order.GetOrdersFromDB().Where(order => order.PatientId == Patient.currentPatient.Id).ToList();
+                OrderItemsControl.ItemsSource = patientOrders;
+            }
+
+            LoadUserData();
+        }
+        
+        private void LoadUserData()
+        {
+            Login.Text = User.currentUser.Login;
+            PhoneNumber.Text = User.currentUser.PhoneNumber;
+            FullName.Text = User.currentUser.LName + " " + User.currentUser.FName + " " + User.currentUser.MName;
+
+            if (Patient.currentPatient != null)
+            {
+                Email.Text = Patient.currentPatient.Email;
+                BurthDate.Text = Patient.currentPatient.BurthDate.ToString();
+                Passport.Text = Patient.currentPatient.Passport;
+            }
+            else
+            {
+                Email.Visibility = Visibility.Collapsed;
+                BurthDate.Visibility = Visibility.Collapsed;
+                Passport.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ChangeData_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new ChangePatientDataPage());
         }
     }
 }
