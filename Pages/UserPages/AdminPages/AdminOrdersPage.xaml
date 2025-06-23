@@ -56,14 +56,25 @@
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Text="{Binding Id}" 
                                                    Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
 
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Text="{Binding ServicesName}" 
-                                                   Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
+                            <ItemsControl Grid.Column="1" ItemsSource="{Binding OrderServices}" Margin="10,0,0,0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Service.Name}" Foreground="White" FontFamily="Bahnschrift SemiBold Condensed"
+                                            FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
 
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" 
                                                        Text="{Binding CreationDate, StringFormat= ' {0:dd.MM.yyyy}'}" 
                                                        Foreground="White" FontFamily="Bahnschrift SemiBold Condensed" FontSize="24"/>
 
-                            <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}">
+                            <Button Grid.Column="3"  Name="OpenOrder" Style="{StaticResource ImageButton}" Click="OpenOrder_Click">
                                 <Image Source="/Sources/more.png"/>
                             </Button>
                         </Grid>

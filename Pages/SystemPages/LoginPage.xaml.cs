@@ -22,18 +22,19 @@ namespace MedicalLaboratory.Pages
             Manager.CurrentPageName = null;
         }
 
+        /// Генерация случайной последовательности для капчи
         private void GenerateRandomSequence(object sender, RoutedEventArgs e)
         {
             CapOut.Text = captcha.GenerateRandomSequence();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (User.IsUserInBD(Login.Text, Password.Password.ToString()))
             {
                 User.currentUser = User.GetUsersFromDB().FirstOrDefault(u => u.Login == Login.Text);
             }
-            //CaptchaTest();
+            CaptchaTest();
             if (IsErrorsEmpty())
             {
                 Manager.NavigateUserToHisPage();

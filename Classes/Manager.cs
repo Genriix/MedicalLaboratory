@@ -6,9 +6,6 @@ namespace MedicalLaboratory.Classes
 {
     internal class Manager
     {
-        // Для тестирования
-        //public static string connectionString = "Data Source=DESKTOP-5CVQU3F\\SQLEXPRESS;Initial Catalog=Laboratory;Integrated Security=True";
-        // Для публикации
         public static string guestConnectionString = "Data Source=tcp:26.199.117.108,33678;Initial Catalog=Laboratory;User ID=LaboratoryGuest;Password=Q]a2/6BqG@:H@g]N;Persist Security Info=True;";
         public static string adminConnectionString = "Data Source=tcp:26.199.117.108,33678;Initial Catalog=Laboratory;User ID=LaboratoryAdmin;Password=rj8QEU)Qf%sYu~7+;Persist Security Info=True;";
         public static string patientConnectionString = "Data Source=tcp:26.199.117.108,33678;Initial Catalog=Laboratory;User ID=LaboratoryPatient;Password=F!L+~k3kdjam8fK3;Persist Security Info=True;";

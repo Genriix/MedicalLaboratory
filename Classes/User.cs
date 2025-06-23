@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace MedicalLaboratory.Classes
 {
     internal class User
     {
+        ///  Поля класса User
         public int UserId { get; set; }
         public int UserRoleId { get; set; }
         public string Login { get; set; }
@@ -15,9 +17,12 @@ namespace MedicalLaboratory.Classes
         public string LName { get; set; }
         public string MName { get; set; }
         public string PhoneNumber { get; set; }
-        public string RoleName { get; set; }
+
+        public UserType UserType { get; set; }
 
         public static User currentUser = new User();
+
+        /// Метод проверки наличия пользователя в базе данных
 
         public static bool IsUserInBD(string login, string password)
         {
@@ -27,7 +32,9 @@ namespace MedicalLaboratory.Classes
 
                 connection.Open();
 
+                // Запрос к базе данных
                 string query = "SELECT ID, User_Type_ID FROM [User] WHERE Login = @Login";
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Login", login);
@@ -70,11 +77,14 @@ namespace MedicalLaboratory.Classes
                 return false;
             }
         }
+
+        /// Выгрузка пользователей из базы данных
         public static List<User> GetUsersFromDB()
         {
             List<User> users = new List<User>();
+            List<UserType> usersType = UserType.GetUserTypesFromDB();
 
-            string query = "Select [User].*, name from [User] join User_Type on [User].User_Type_ID = User_Type.ID";
+            string query = "Select * from [User]";
 
             using (SqlConnection connection = new SqlConnection(Manager.adminConnectionString))
             {
@@ -94,7 +104,7 @@ namespace MedicalLaboratory.Classes
                         LName = (string)reader["l_name"],
                         MName = reader["m_name"] != DBNull.Value ? (string)reader["m_name"] : "",
                         PhoneNumber = (string)reader["phone_number"],
-                        RoleName = (string)reader["name"]
+                        UserType = usersType.FirstOrDefault(ut => ut.Id == (int)reader["User_Type_ID"]),
                     });
                 }
             }

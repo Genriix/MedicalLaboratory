@@ -38,7 +38,7 @@
                 </Border>
 
                 <Button Style="{StaticResource BaseButton}" Content="Войти" 
-                        HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click" Margin="5,10,5,0" Width="150"/>
+                        HorizontalAlignment="Center" VerticalAlignment="Top" Click="LoginButton_Click" Margin="5,10,5,0" Width="150"/>
                 <TextBlock FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
                     <Hyperlink NavigateUri="RegistrationPage.xaml">Зарегистрироваться</Hyperlink>
                 </TextBlock>

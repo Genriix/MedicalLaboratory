@@ -37,7 +37,7 @@ namespace MedicalLaboratory.Pages.UserPages
             if (Patient.currentPatient != null)
             {
                 Email.Text = Patient.currentPatient.Email;
-                BurthDate.Text = Patient.currentPatient.BurthDate.ToString();
+                BurthDate.Text = Patient.currentPatient.BurthDate.ToShortDateString();
                 Passport.Text = Patient.currentPatient.Passport;
             }
             else

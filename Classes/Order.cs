@@ -11,15 +11,19 @@ namespace MedicalLaboratory.Classes
         public int PatientId { get; set; }
         public DateTime CreationDate { get; set; }
         public float ExecutionTime { get; set; }
+
         public List<OrderService> OrderServices { get; set; }
-        public List<Service> Services = new List<Service>();
-        public string ServicesName { get; set; }
+
+
+        public static Order SelectedOrder = new Order();
 
         public static List<Order> GetOrdersFromDB()
         {
+            List<OrderService> orderServices = OrderService.GetOrderServicesFromDB();
+
             List<Order> orders = new List<Order>(); // Все Order из БД
 
-            string query = "Select ID, Patient_ID, creation_date from [Order]";
+            string query = "Select * from [Order]";
 
             using (SqlConnection connection = new SqlConnection(Manager.adminConnectionString))
             {
@@ -34,30 +38,9 @@ namespace MedicalLaboratory.Classes
                         Id = (int)reader["ID"],
                         PatientId = (int)reader["Patient_ID"],
                         CreationDate = (DateTime)reader["creation_date"],
+                        ExecutionTime = reader["execution_time"] != DBNull.Value ? (float)reader["execution_time"] : 0,
+                        OrderServices = orderServices.Where(os => os.OrderId == (int)reader["ID"]).ToList(),
                     });
-                }
-            }
-
-            List<OrderService> orderServices = OrderService.GetOrderServicesFromDB();
-            List<Service> service = Service.GetServicesFromDB();
-
-            for (int i = 0; orders.Count > i; i++)
-            {
-                orders[i].OrderServices = orderServices.Where(os => os.OrderId == orders[i].Id).ToList();
-
-                if (orders[i].OrderServices != null && orders[i].OrderServices.Count > 0)
-                {
-                    orders[i].Services.Clear();
-
-                    foreach (var orderService in orders[i].OrderServices)
-                    {
-                        Service foundService = service.FirstOrDefault(s => s.Id == orderService.ServiceId);
-                        if (foundService != null)
-                        {
-                            orders[i].Services.Add(foundService);
-                        }
-                    }
-                    orders[i].ServicesName = string.Join(", ", orders[i].Services.Select(s => s.Name));
                 }
             }
             return orders;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace MedicalLaboratory.Classes
 {
@@ -12,11 +13,14 @@ namespace MedicalLaboratory.Classes
         public decimal Cost { get; set; }
         public float ResultMin { get; set; }
         public float ResultMax { get; set; }
-        public string AnalyzerName { get; set; }
+
+        public AnalyzerType AnalyzerType { get; set; }
 
         public static List<Service> GetServicesFromDB()
         {
             List<Service> services = new List<Service>();
+
+            List<AnalyzerType> analyzerTypes = AnalyzerType.GetAnalyzerTypesFromDB();
 
             string query = "Select Service.*, Analyzer_Type.name as analyzer_name from Service join Analyzer_Type on Service.Analyzer_Type_ID = Analyzer_Type.ID";
 
@@ -36,7 +40,7 @@ namespace MedicalLaboratory.Classes
                         Cost = (decimal)reader["cost"],
                         ResultMin = reader["result_min"] != DBNull.Value ? (float)reader["result_min"] : 0,
                         ResultMax = reader["result_max"] != DBNull.Value ? (float)reader["result_max"] : 0,
-                        AnalyzerName = reader["analyzer_name"].ToString(),
+                        AnalyzerType = analyzerTypes.FirstOrDefault(at => at.Id == (int)reader["Analyzer_Type_ID"]),
                     });
                 }
             }

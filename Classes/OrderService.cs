@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace MedicalLaboratory.Classes
 {
@@ -14,18 +15,20 @@ namespace MedicalLaboratory.Classes
         public DateTime DateAdmissionToAnalyzer { get; set; }
         public float ExecutionTime { get; set; }
         public string ReserchingResults { get; set; }
-        public string StatusName { get; set; }
+
+        public string AnalyzerTypeName => Service?.AnalyzerType?.Name ?? "N/A";
+
+        public Status Status { get; set; }
+        public Service Service { get; set; }
 
         public static List<OrderService> GetOrderServicesFromDB()
         {
             List<OrderService> orderServices = new List<OrderService>();
 
-            string query = @"
-                Select Order_Service.*, 
-                Status.name 
-                from Order_Service 
-                join Status 
-                on Status_ID = Status.ID";
+            List<Status> status = Status.GetStatusesFromDB();
+            List<Service> service = Service.GetServicesFromDB();
+
+            string query = @"Select * from Order_Service";
 
             using (SqlConnection connection = new SqlConnection(Manager.adminConnectionString))
             {
@@ -45,7 +48,9 @@ namespace MedicalLaboratory.Classes
                         DateAdmissionToAnalyzer = reader["date_admission_to_analyzer"] != DBNull.Value ? (DateTime)reader["execution_time"] : DateTime.MinValue,
                         ExecutionTime = reader["execution_time"] != DBNull.Value ? (float)reader["execution_time"] : 0,
                         ReserchingResults = reader["reserching_results"] != DBNull.Value ? (string)reader["reserching_results"] : "null",
-                        StatusName = reader["name"].ToString(),
+
+                        Status = status.FirstOrDefault(s => s.Id == (int)reader["Status_ID"]),
+                        Service = service.FirstOrDefault(s => s.Id == (int)reader["Service_ID"]),
                     });
                 }
             }

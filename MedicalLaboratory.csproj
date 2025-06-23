@@ -66,6 +66,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -94,6 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\AnalyzerType.cs" />
     <Compile Include="Classes\CAPTCHA.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Order.cs" />
@@ -101,7 +106,9 @@
     <Compile Include="Classes\Patient.cs" />
     <Compile Include="Classes\Service.cs" />
     <Compile Include="Classes\ShoppingCart.cs" />
+    <Compile Include="Classes\Status.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\UserType.cs" />
     <Compile Include="MedicalLaboratoryWindow.xaml.cs">
       <DependentUpon>MedicalLaboratoryWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -127,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserPages\AdminPages\AdminOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPages\AdminPages\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +185,9 @@
     <Compile Include="Pages\UserPages\AdminPages\AdminOrdersPage.xaml.cs">
       <DependentUpon>AdminOrdersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UserPages\AdminPages\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UserPages\AdminPages\ServicesPage.xaml.cs">
       <DependentUpon>ServicesPage.xaml</DependentUpon>
     </Compile>
@@ -210,6 +224,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="MedicalLaboratory_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
